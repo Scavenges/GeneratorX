@@ -175,5 +175,5 @@ public class PersonBeanX extends PersonBean {
 ```
 
 
-代码写的比较急，两周不到完成，应该有些缺陷，欢迎提[issues](https://github.com/weizongwei5/GeneratorX/issues/new)。
+代码写的比较急，两周不到完成，应该有些缺陷，欢迎提[issues](https://github.com/Scavenges/GeneratorX/issues/new)。
 
