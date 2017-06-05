@@ -1,0 +1,2 @@
+# GeneratorX
+just generator  class.
