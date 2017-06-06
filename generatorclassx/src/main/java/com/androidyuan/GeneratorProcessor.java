@@ -14,6 +14,7 @@ import com.androidyuan.generator.ParcelableGenerator;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.TypeSpec;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -152,7 +153,7 @@ public class GeneratorProcessor extends AbstractProcessor {
             String message =
                     annotatedClass.annotatedClassName + " / " + annotatedClass.typeElement + " / "
                             + Arrays.toString(annotatedClass.variableNames.toArray());
-            messager.printMessage(Diagnostic.Kind.NOTE, message, annotatedClass.typeElement);
+            //messager.printMessage(Diagnostic.Kind.NOTE, message, annotatedClass.typeElement);//这里如果不注视掉会 在build的时候停止 但run可以直接run
         }
 
         // 生成源代码
