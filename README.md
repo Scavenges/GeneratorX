@@ -1,6 +1,5 @@
-
 # GeneratorX
-帮助项目开发时，自动生成类的代码。
+帮助项目开发时，自动生成一个标准的java类。
 
 会自动生成如下代码
 * 默认构造函数　和　非默认构造函数
@@ -11,37 +10,18 @@
 * implements Parcelable 需要的代码
 
 -------------------
-## 使用
-
-先下载jar包：[点我下载](https://github.com/weizongwei5/GeneratorX/raw/master/other/generatorclassx-1.0.2.jar)
-### 1.apt依赖
-以为涉及到编译时生成，所以需要apt插件，apt是gradle的一个插件，他使注解处理器生成的代码能被Android Studio正确的引用。
-教程：[http://code.neenbedankt.com/gradle-android-apt-plugin/](http://code.neenbedankt.com/gradle-android-apt-plugin/)
-
-### 2.gradle中使用apt依赖javapoet和jar
-
+## 使用 
+1.0.2已经发布。
+```
+dependencies {
+compile 'com.scavenges:GeneratorX:1.0.2'
+}
 ```
 
-    apt fileTree(dir: 'libs', include: ['*.jar'])//这句加的
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    
-    apt 'com.squareup:javapoet:1.4.0'
-    compile 'com.squareup:javapoet:1.4.0'
-```
-
-##　3.添加一个注解　
-```
-@SimpleGenerator　　
-public class CLName
-
-可选　implements Parcelable　如果你需要做序列化的话　 
-```
-## 开始写java代码：
-
-当我写出如下代码,我build一下
+当我写出如下代码
 ```
 @SimpleGenerator
-public abstract class PersonBean implements Parcelable {
+public abstract class PersonBean implements Parcelable {//可选　implements Parcelable　如果你需要做序列化的话　 
 
     public Enum s;
     public String name;
@@ -52,7 +32,7 @@ public abstract class PersonBean implements Parcelable {
 }
 ```
 
-自动帮我生成一个类
+我build一下，自动帮我生成一个类
  
 ```
 package com.androidyuan.model;
@@ -175,5 +155,5 @@ public class PersonBeanX extends PersonBean {
 ```
 
 
-代码写的比较急，两周不到完成，应该有些缺陷，欢迎提[issues](https://github.com/Scavenges/GeneratorX/issues/new)。
+如果发现缺陷，欢迎提[issues](https://github.com/Scavenges/GeneratorX/issues/new)。
 
