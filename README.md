@@ -1,6 +1,8 @@
 # GeneratorX
 帮助项目开发时，自动生成一个标准的java类。
 
+[![License](https://img.shields.io/badge/license-Apache%202-green.svg)](https://www.apache.org/licenses/LICENSE-2.0)
+
 会自动生成如下代码
 * 默认构造函数　和　非默认构造函数
 * get set
