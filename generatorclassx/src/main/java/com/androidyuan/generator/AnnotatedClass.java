@@ -1,8 +1,10 @@
 package com.androidyuan.generator;
 
+import com.squareup.javapoet.AnnotationSpec;
 import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.TypeName;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
@@ -30,17 +32,20 @@ public class AnnotatedClass {
 
     //成员变量 以及对应 type
     HashMap<String, TypeMirror> variableMap = new HashMap<>();
+    //成员变量对应的注解,有可能是多个注解
+    HashMap<String, ArrayList<AnnotationSpec>> variableAnooMap = new HashMap<>();
 
     private boolean isParcelable = false;
 
     public AnnotatedClass(TypeElement typeElement, List<String> variableNames,
-            HashMap<String, TypeMirror> map, boolean isParce) {
+                          HashMap<String, TypeMirror> map, HashMap<String, ArrayList<AnnotationSpec>> map1, boolean isParce) {
 
         this.annotatedClassName = typeElement.getSimpleName().toString();
         generatorClassName = annotatedClassName + "X";
         this.variableNames = variableNames;
         this.typeElement = typeElement;
         this.variableMap = map;
+        this.variableAnooMap = map1;
         this.isParcelable = isParce;
     }
 
@@ -64,11 +69,19 @@ public class AnnotatedClass {
     }
 
 
-
     public TypeMirror getFiledType(String name) {
 
         if (variableMap.containsKey(name)) {
             return variableMap.get(name);
+        } else {
+            return null;
+        }
+    }
+
+    //获取某个成员变量的注解
+    public ArrayList<AnnotationSpec> getFiledAnoo(String name) {
+        if (variableAnooMap.containsKey(name)) {
+            return variableAnooMap.get(name);
         } else {
             return null;
         }
