@@ -215,7 +215,11 @@ public class GeneratorProcessor extends AbstractProcessor {
                         //注解value()返回的是一个集合Collection，通过迭代出下一个的值
                         Object value = entry.getValue().getValue();
                         //增加注解初始值
-                        annotationBuilder.addMember(key, "$S", value);
+                        if (value instanceof String) {
+                            annotationBuilder.addMember(key, "$S", value);
+                        } else {
+                            annotationBuilder.addMember(key, "$L", value);
+                        }
                         //打印信息，在此处遇到一个问题，下边的打印方法貌似会覆盖之前的打印数据。
                         messager.printMessage(
                                 Diagnostic.Kind.ERROR,
