@@ -10,6 +10,7 @@
 * toString
 * equals
 * implements Parcelable 需要的代码
+* 字段注解(兼容多个注解类型，多个注解值)
 
 -------------------
 ## 使用 
