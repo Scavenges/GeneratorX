@@ -221,10 +221,10 @@ public class GeneratorProcessor extends AbstractProcessor {
                             annotationBuilder.addMember(key, "$L", value);
                         }
                         //打印信息，在此处遇到一个问题，下边的打印方法貌似会覆盖之前的打印数据。
-                        messager.printMessage(
-                                Diagnostic.Kind.ERROR,
-                                String.format("全类名：" + simpleName + "   注解key：" + key + "   注解值：" + value, this),
-                                element);
+//                        messager.printMessage(
+//                                Diagnostic.Kind.ERROR,
+//                                String.format("全类名：" + simpleName + "   注解key：" + key + "   注解值：" + value, this),
+//                                element);
                     }
                     //new一个新的注解空间
                     AnnotationSpec annotationSpec = annotationBuilder.build();
