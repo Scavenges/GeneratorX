@@ -3,21 +3,21 @@ apply plugin: 'java'
 // 这里添加下面两行代码。
 //apply plugin: 'com.github.dcendents.android-maven'
 //apply plugin: 'com.jfrog.bintray'
-//apply plugin: 'com.novoda.bintray-release'
+apply plugin: 'com.novoda.bintray-release'
 
 // This is important even if Android Studio claims it isn't
 // used. Android can't interpret Java 8 byte code.
 sourceCompatibility = JavaVersion.VERSION_1_7
 targetCompatibility = JavaVersion.VERSION_1_7
 
-//publish {
-//    userOrg = 'scavenges'      //bintray注册的用户名
-//    groupId = 'com.scavenges'         //compile引用时的第1部分groupId
-//    artifactId = 'GeneratorX'     //compile引用时的第2部分项目名
-//    publishVersion = '1.0.2'    //compile引用时的第3部分版本号
-//    desc = 'just generator class.'
-//    website = 'https://github.com/Scavenges/GeneratorX'
-//}
+publish {
+    userOrg = 'scavenges'      //bintray注册的用户名
+    groupId = 'com.scavenges'         //compile引用时的第1部分groupId
+    artifactId = 'GeneratorX'     //compile引用时的第2部分项目名
+    publishVersion = '1.1'    //compile引用时的第3部分版本号
+    desc = 'just generator class.'
+    website = 'https://github.com/Scavenges/GeneratorX'
+}
 
 dependencies {
 //    compile project(':lib')
@@ -26,4 +26,4 @@ dependencies {
 }
 
 
-//version = "1.0.2"
+version = "1.1"
