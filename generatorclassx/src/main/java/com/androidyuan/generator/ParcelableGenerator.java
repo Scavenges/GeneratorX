@@ -7,6 +7,7 @@ import static javax.lang.model.element.Modifier.FINAL;
 import static javax.lang.model.element.Modifier.PUBLIC;
 import static javax.lang.model.element.Modifier.STATIC;
 
+import com.squareup.javapoet.AnnotationSpec;
 import com.squareup.javapoet.ArrayTypeName;
 import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.CodeBlock;
@@ -16,8 +17,9 @@ import com.squareup.javapoet.ParameterizedTypeName;
 import com.squareup.javapoet.TypeName;
 import com.squareup.javapoet.TypeSpec;
 
+import java.util.ArrayList;
+
 import javax.annotation.processing.ProcessingEnvironment;
-import javax.lang.model.element.Modifier;
 import javax.lang.model.element.TypeElement;
 import javax.lang.model.util.Types;
 
@@ -57,12 +59,15 @@ public class ParcelableGenerator extends CodeGenerator {
 
         builder.addField(generateCreator());
         for (String variablename : anno.variableNames) {
+            //获取变量的注解集合
+            ArrayList<AnnotationSpec> annotationSpecs = anno.getFiledAnoo(variablename);
 
-            builder.addField(//private Type variablename
-                    getFiledType(variablename),
-                    variablename,
-                    Modifier.PRIVATE
-            );
+            FieldSpec.Builder fileldBuilder = FieldSpec.builder(getFiledType(variablename), variablename);
+            for (int i =0;i<annotationSpecs.size();i++) {
+                fileldBuilder.addAnnotation(annotationSpecs.get(i));
+            }
+            fileldBuilder.addModifiers(PUBLIC);
+            builder.addField(fileldBuilder.build());
             builder.addMethod(makeSetMethod(variablename));
             builder.addMethod(makeGetMethod(variablename));
         }
@@ -142,9 +147,6 @@ public class ParcelableGenerator extends CodeGenerator {
                 .initializer("$L", creatorImpl)
                 .build();
     }
-
-
-
 
 
     MethodSpec generateDescribeContents() {

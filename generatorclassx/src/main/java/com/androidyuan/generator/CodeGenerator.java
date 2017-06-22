@@ -6,6 +6,7 @@ import static com.squareup.javapoet.TypeSpec.classBuilder;
 
 import static javax.lang.model.element.Modifier.PUBLIC;
 
+
 import com.androidyuan.Helper.ClsHelper;
 import com.androidyuan.SimpleGenerator;
 import com.androidyuan.type.BaseType;
@@ -51,12 +52,11 @@ public class CodeGenerator {
         builder.addMethod(makeConstructMethod());
 
         for (String variablename : anno.variableNames) {
-
             builder.addField(//private Type variablename
                     getFiledType(variablename),
                     variablename,
                     Modifier.PRIVATE
-            );
+            ).addAnnotations(anno.getFiledAnoo(variablename));
             builder.addMethod(makeSetMethod(variablename));
             builder.addMethod(makeGetMethod(variablename));
         }
