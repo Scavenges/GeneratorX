@@ -155,7 +155,7 @@ public class PersonBeanX extends PersonBean {
 ```
 本仓库代码持续贡献人 ：
 
-[workertao](https://github.com/workertao) , [weizongwei5](https://github.com/weizongwei5) , [DankeLuo](https://github.com/DankeLuo)
+[workertao](https://github.com/workertao) , [Bruce](https://github.com/BruceWind) , [DankeLuo](https://github.com/DankeLuo)
 
 
 如果发现缺陷，欢迎提[issues](https://github.com/Scavenges/GeneratorX/issues/new)。
